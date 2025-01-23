@@ -29,7 +29,7 @@
     <dependency>
       <groupId>com.mysql</groupId>
       <artifactId>mysql-connector-j</artifactId>
-      <version>8.0.31</version>
+      <version>9.2.0</version>
     </dependency>
     <dependency>
       <groupId>net.sourceforge.jtds</groupId>
@@ -73,17 +73,10 @@
             </goals>
             <configuration>
               <tasks>
-                <echo message="loading properties from ${user.home}/.activiti/${cfgdir}/build.${database}.properties" />
-                <property file="${user.home}/.activiti/${cfgdir}/build.${database}.properties" />
-                <echo message="cleaning db ${jdbc.url}" />
-                <sql driver="${jdbc.driver}" 
-                     password="${jdbc.password}" 
-                     url="${jdbc.url}" 
-                     userid="${jdbc.username}"
-                     onerror="continue"
-                     autocommit="true"
-                     classpathref="maven.test.classpath" 
-                     src="scripts/drop.activiti.${database}.sql"/>
+                <echo message="loading properties from ${user.home}/.activiti/${cfgdir}/build.${database}.properties"/>
+                <property file="${user.home}/.activiti/${cfgdir}/build.${database}.properties"/>
+                <echo message="cleaning db ${jdbc.url}"/>
+                <sql driver="${jdbc.driver}" password="${jdbc.password}" url="${jdbc.url}" userid="${jdbc.username}" onerror="continue" autocommit="true" classpathref="maven.test.classpath" src="scripts/drop.activiti.${database}.sql"/>
               </tasks>
             </configuration>
           </execution>
